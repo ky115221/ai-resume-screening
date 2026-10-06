@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ai-resumescreen-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    plan: free
+    envVars:
+      - { key: NODE_VERSION, value: "20" }
+      - { key: DATABASE_URL, sync: false }
+      - { key: SUPABASE_URL, sync: false }
+      - { key: SUPABASE_ANON_KEY, sync: false }
+      - { key: SUPABASE_SERVICE_ROLE_KEY, sync: false }
+      - { key: CORS_ORIGINS, sync: false }
+      - { key: JWT_SECRET, generateValue: true }
+      - { key: SUPABASE_BUCKET, value: resumes }
